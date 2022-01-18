@@ -1,0 +1,39 @@
+ User
+..........
+
+- Categorie
+nom : string, 255
+
+- Commentaire
+contenu: text
+auteur: relation, User (1 Commentaire a 1 User et 1 User a N Commentaire)
+
+- Article
+titre : string, 255
+contenu : text
+motsCles : text
+categorie: relation, Categorie (1 Article a 1 Categorie et 1 Categorie a N Article)
+commentaires : relation, Commentaire (1 Article a N Commentaire et 1 Commentaire a 1 Article)
+auteur: relation, User (1 Article a 1 User et 1 User a N Article)
+
+- Produit
+nom : string, 255
+description: text
+prix : float
+image : string, 255
+
+- Commande
+creation : datetime
+reference : string, 40
+client : relation, User (1 Commande a 1 User et 1 User a N Commande)
+
+- Paiement
+creation : datetime
+stripeSessionId : string, 255
+commande : relation, Commande (1 Paiement a 1 Commande et 1 Commande a 1 Paiement)
+
+- DetailCommande
+produit: relation, Produit (1 DetailCommande a 1 Produit et 1 Produit a N DetailCommande)
+commande: relation, Commande (1 DetailCommande a 1 Commande et 1 Commande a N DetailCommande)
+quantite: integer
+ 
