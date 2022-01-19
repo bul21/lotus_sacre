@@ -23,14 +23,14 @@ class Commentaire
     private $contenu;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class)
-     */
-    private $user;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="relation")
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="commentaires")
      */
     private $auteur;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Article::class, inversedBy="commentaires")
+     */
+    private $article;
 
     public function getId(): ?int
     {
@@ -49,26 +49,26 @@ class Commentaire
         return $this;
     }
 
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    public function getAuteur(): ?Article
+    public function getAuteur(): ?User
     {
         return $this->auteur;
     }
 
-    public function setAuteur(?Article $auteur): self
+    public function setAuteur(?User $auteur): self
     {
         $this->auteur = $auteur;
+
+        return $this;
+    }
+
+    public function getArticle(): ?Article
+    {
+        return $this->article;
+    }
+
+    public function setArticle(?Article $article): self
+    {
+        $this->article = $article;
 
         return $this;
     }

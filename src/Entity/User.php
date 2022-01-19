@@ -40,12 +40,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $password;
 
     /**
+     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="auteur")
+     */
+    private $commentaires;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="auteur")
+     */
+    private $articles;
+
+    /**
      * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="client")
      */
     private $commandes;
 
+    
+
     public function __construct()
     {
+        $this->commentaires = new ArrayCollection();
+        $this->articles = new ArrayCollection();
         $this->commandes = new ArrayCollection();
     }
 
@@ -139,6 +153,66 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
+     * @return Collection|Commentaire[]
+     */
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function addCommentaire(Commentaire $commentaire): self
+    {
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires[] = $commentaire;
+            $commentaire->setAuteur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaire $commentaire): self
+    {
+        if ($this->commentaires->removeElement($commentaire)) {
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getAuteur() === $this) {
+                $commentaire->setAuteur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Article[]
+     */
+    public function getArticles(): Collection
+    {
+        return $this->articles;
+    }
+
+    public function addArticle(Article $article): self
+    {
+        if (!$this->articles->contains($article)) {
+            $this->articles[] = $article;
+            $article->setAuteur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArticle(Article $article): self
+    {
+        if ($this->articles->removeElement($article)) {
+            // set the owning side to null (unless already changed)
+            if ($article->getAuteur() === $this) {
+                $article->setAuteur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
      * @return Collection|Commande[]
      */
     public function getCommandes(): Collection
@@ -167,4 +241,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+   
+
+   
 }

@@ -18,9 +18,9 @@ class Commande
     private $id;
 
     /**
-     * @ORM\Column(type="datetime_immutable")
+     * @ORM\Column(type="datetime")
      */
-    private $createAt;
+    private $creation;
 
     /**
      * @ORM\Column(type="string", length=40)
@@ -37,14 +37,14 @@ class Commande
         return $this->id;
     }
 
-    public function getCreateAt(): ?\DateTimeImmutable
+    public function getCreation(): ?\DateTimeInterface
     {
-        return $this->createAt;
+        return $this->creation;
     }
 
-    public function setCreateAt(\DateTimeImmutable $createAt): self
+    public function setCreation(\DateTimeInterface $creation): self
     {
-        $this->createAt = $createAt;
+        $this->creation = $creation;
 
         return $this;
     }

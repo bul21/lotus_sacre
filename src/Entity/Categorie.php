@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\CategoriesRepository;
+use App\Repository\CategorieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=CategoriesRepository::class)
+ * @ORM\Entity(repositoryClass=CategorieRepository::class)
  */
-class Categories
+class Categorie
 {
     /**
      * @ORM\Id
@@ -22,16 +22,16 @@ class Categories
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Nom;
+    private $nom;
 
     /**
      * @ORM\OneToMany(targetEntity=Article::class, mappedBy="categorie")
      */
-    private $commentaires;
+    private $articles;
 
     public function __construct()
     {
-        $this->commentaires = new ArrayCollection();
+        $this->articles = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -41,12 +41,12 @@ class Categories
 
     public function getNom(): ?string
     {
-        return $this->Nom;
+        return $this->nom;
     }
 
-    public function setNom(string $Nom): self
+    public function setNom(string $nom): self
     {
-        $this->Nom = $Nom;
+        $this->nom = $nom;
 
         return $this;
     }
@@ -54,27 +54,27 @@ class Categories
     /**
      * @return Collection|Article[]
      */
-    public function getCommentaires(): Collection
+    public function getArticles(): Collection
     {
-        return $this->commentaires;
+        return $this->articles;
     }
 
-    public function addCommentaire(Article $commentaire): self
+    public function addArticle(Article $article): self
     {
-        if (!$this->commentaires->contains($commentaire)) {
-            $this->commentaires[] = $commentaire;
-            $commentaire->setCategorie($this);
+        if (!$this->articles->contains($article)) {
+            $this->articles[] = $article;
+            $article->setCategorie($this);
         }
 
         return $this;
     }
 
-    public function removeCommentaire(Article $commentaire): self
+    public function removeArticle(Article $article): self
     {
-        if ($this->commentaires->removeElement($commentaire)) {
+        if ($this->articles->removeElement($article)) {
             // set the owning side to null (unless already changed)
-            if ($commentaire->getCategorie() === $this) {
-                $commentaire->setCategorie(null);
+            if ($article->getCategorie() === $this) {
+                $article->setCategorie(null);
             }
         }
 

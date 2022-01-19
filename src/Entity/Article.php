@@ -35,23 +35,23 @@ class Article
     private $motsCles;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Categories::class, inversedBy="commentaires")
+     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="articles")
      */
     private $categorie;
 
     /**
-     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="auteur")
+     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="article")
      */
-    private $relation;
+    private $commentaires;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class)
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="articles")
      */
     private $auteur;
 
     public function __construct()
     {
-        $this->relation = new ArrayCollection();
+        $this->commentaires = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -95,12 +95,12 @@ class Article
         return $this;
     }
 
-    public function getCategorie(): ?Categories
+    public function getCategorie(): ?Categorie
     {
         return $this->categorie;
     }
 
-    public function setCategorie(?Categories $categorie): self
+    public function setCategorie(?Categorie $categorie): self
     {
         $this->categorie = $categorie;
 
@@ -110,27 +110,27 @@ class Article
     /**
      * @return Collection|Commentaire[]
      */
-    public function getRelation(): Collection
+    public function getCommentaires(): Collection
     {
-        return $this->relation;
+        return $this->commentaires;
     }
 
-    public function addRelation(Commentaire $relation): self
+    public function addCommentaire(Commentaire $commentaire): self
     {
-        if (!$this->relation->contains($relation)) {
-            $this->relation[] = $relation;
-            $relation->setAuteur($this);
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires[] = $commentaire;
+            $commentaire->setArticle($this);
         }
 
         return $this;
     }
 
-    public function removeRelation(Commentaire $relation): self
+    public function removeCommentaire(Commentaire $commentaire): self
     {
-        if ($this->relation->removeElement($relation)) {
+        if ($this->commentaires->removeElement($commentaire)) {
             // set the owning side to null (unless already changed)
-            if ($relation->getAuteur() === $this) {
-                $relation->setAuteur(null);
+            if ($commentaire->getArticle() === $this) {
+                $commentaire->setArticle(null);
             }
         }
 

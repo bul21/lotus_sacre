@@ -18,12 +18,12 @@ class Paiement
     private $id;
 
     /**
-     * @ORM\Column(type="datetime_immutable")
+     * @ORM\Column(type="datetime")
      */
-    private $createAt;
+    private $creation;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=255)
      */
     private $stripeSessionId;
 
@@ -37,24 +37,24 @@ class Paiement
         return $this->id;
     }
 
-    public function getCreateAt(): ?\DateTimeImmutable
+    public function getCreation(): ?\DateTimeInterface
     {
-        return $this->createAt;
+        return $this->creation;
     }
 
-    public function setCreateAt(\DateTimeImmutable $createAt): self
+    public function setCreation(\DateTimeInterface $creation): self
     {
-        $this->createAt = $createAt;
+        $this->creation = $creation;
 
         return $this;
     }
 
-    public function getStripeSessionId(): ?int
+    public function getStripeSessionId(): ?string
     {
         return $this->stripeSessionId;
     }
 
-    public function setStripeSessionId(int $stripeSessionId): self
+    public function setStripeSessionId(string $stripeSessionId): self
     {
         $this->stripeSessionId = $stripeSessionId;
 
