@@ -23,7 +23,7 @@ class Commentaire
     private $contenu;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="commentaires")
+     * @ORM\ManyToOne(targetEntity=User::class)
      */
     private $auteur;
 

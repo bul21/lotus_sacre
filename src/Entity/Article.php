@@ -32,10 +32,10 @@ class Article
     /**
      * @ORM\Column(type="text")
      */
-    private $motsCles;
+    private $motCles;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="articles")
+     * @ORM\ManyToOne(targetEntity=Categorie::class)
      */
     private $categorie;
 
@@ -45,7 +45,7 @@ class Article
     private $commentaires;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="articles")
+     * @ORM\ManyToOne(targetEntity=User::class)
      */
     private $auteur;
 
@@ -83,14 +83,14 @@ class Article
         return $this;
     }
 
-    public function getMotsCles(): ?string
+    public function getMotCles(): ?string
     {
-        return $this->motsCles;
+        return $this->motCles;
     }
 
-    public function setMotsCles(string $motsCles): self
+    public function setMotCles(string $motCles): self
     {
-        $this->motsCles = $motsCles;
+        $this->motCles = $motCles;
 
         return $this;
     }
