@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-
+/* c'est une importation  */
 use App\Form\ContactType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,12 +16,14 @@ class ContactController extends AbstractController
     public function index(Request $request): Response
     {
 
-
+/* c'est un formulaire de contact à remplir pour l'utilisateur  */
         $form= $this->createForm(ContactType::class);
         $form->handleRequest($request);
         $data=$form->getData();
         
-
+/* c'est un formulaire  avec un bouton "envoyer" avec une condition: si le formulaire est rempli correctement 
+ et envoyé, c'est écrit succes
+sinon le formulaire reste vide*/
         if($form->isSubmitted() && $form->isValid()){
             $email=$data["email"];
             $nom=$data["nom"];
