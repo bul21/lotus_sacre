@@ -29,13 +29,18 @@ class AdminProduitController extends AbstractController
     /**
      * @Route("/new", name="admin_produit_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request,FileUploader $fileUploader, EntityManagerInterface $toto): Response
     {
         $produit = new Produit();
         $form = $this->createForm(ProduitType::class, $produit);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $imageFile = $form->get('image')->getData();
+        if ($imageFile) {
+            $imageFile = $fileUploader->upload($imageFile);
+            $produit->setImageFilename($imageFileName);
+        }
             $entityManager->persist($produit);
             $entityManager->flush();
 

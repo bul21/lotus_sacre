@@ -44,6 +44,11 @@ class Produit
      */
     private $detailCommandes;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $imageFilename;
+
     public function __construct()
     {
         $this->detailCommandes = new ArrayCollection();
@@ -128,6 +133,18 @@ class Produit
                 $detailCommande->setProduit(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImageFilename(): ?string
+    {
+        return $this->imageFilename;
+    }
+
+    public function setImageFilename(?string $imageFilename): self
+    {
+        $this->imageFilename = $imageFilename;
 
         return $this;
     }
