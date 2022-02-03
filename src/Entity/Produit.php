@@ -35,11 +35,6 @@ class Produit
     private $prix;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $image;
-
-    /**
      * @ORM\OneToMany(targetEntity=DetailCommande::class, mappedBy="produit")
      */
     private $detailCommandes;

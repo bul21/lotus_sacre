@@ -10,8 +10,14 @@
             <tr>
                 <th>Id</th>
                 <td>{{ produit.id }}</td>
-            </tr>
+            </tr>   
             <tr>
+                <th>Image</th>
+                <td>
+                    <img src="{{asset('uploads/' ~ produit.imageFilename)}}" />
+                </td>
+            </tr> 
+            <tr> 
                 <th>Nom</th>
                 <td>{{ produit.nom }}</td>
             </tr>
@@ -25,7 +31,7 @@
             </tr>
             <tr>
                 <th>Image</th>
-                <td>{{ produit.image }}</td>
+                <td>{{ produit.imageFilename }}</td>
             </tr>
         </tbody>
     </table>
