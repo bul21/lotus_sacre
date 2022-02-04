@@ -9,11 +9,10 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Image</th>
                 <th>Nom</th>
                 <th>Description</th>
                 <th>Prix</th>
-
+                <th>ImageFilename</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -21,16 +20,13 @@
         {% for produit in produits %}
             <tr>
                 <td>{{ produit.id }}</td>
-                <td>
-                    <img src= {{asset('uploads/' ~ produit.imageFilename)}} width="100%"/>
-                </td>
                 <td>{{ produit.nom }}</td>
                 <td>{{ produit.description }}</td>
                 <td>{{ produit.prix }}</td>
                 <td>{{ produit.imageFilename }}</td>
                 <td>
-                    <a href="{{ path('admin_produit_show', {'id': produit.id}) }}">show</a>
-                    <a href="{{ path('admin_produit_edit', {'id': produit.id}) }}">edit</a>
+                    <a href="{{ path('catalogue_show', {'id': produit.id}) }}">show</a>
+                   
                 </td>
             </tr>
         {% else %}
@@ -41,5 +37,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('admin_produit_new') }}">Create new</a>
+    
 {% endblock %}
