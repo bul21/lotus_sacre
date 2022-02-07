@@ -23,7 +23,10 @@
                 <td>{{ produit.nom }}</td>
                 <td>{{ produit.description }}</td>
                 <td>{{ produit.prix }}</td>
-                <td>{{ produit.imageFilename }}</td>
+                <td>
+                     <img src="{{asset('uploads/' ~ produit.ImageFilename )}}"/>
+                
+                </td>
                 <td>
                     <a href="{{ path('catalogue_show', {'id': produit.id}) }}">show</a>
                    
