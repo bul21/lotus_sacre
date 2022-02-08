@@ -25,7 +25,9 @@
             </tr>
             <tr>
                 <th>ImageFilename</th>
-                <td>{{ produit.imageFilename }}</td>
+                <td>
+                    <img src="{{asset('uploads/' ~ produit.imageFilename )}}"/>
+                </td>
             </tr>
         </tbody>
     </table>
