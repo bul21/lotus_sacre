@@ -6,7 +6,6 @@ namespace App\Service;
 use App\Entity\Produit;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-use function Symfony\Component\DependencyInjection\Loader\Configurator\ref;
 
 class CartService 
 {
@@ -40,7 +39,7 @@ class CartService
             ];
         }
 
-        $cart['total'] =$cart['total']+ $produit->getPrice();
+        $cart['total'] =$cart['total']+ $produit->getId();
         $cart['elements'][$produitId]['quantity'] =$cart['elements'][$produitId]['quantity'] +1;
 
         $this ->sessionInterface->set('cart',$cart);
@@ -50,14 +49,14 @@ class CartService
     {
 
         $cart =$this->get();
-        $produitId = $produit->getId();
+        $produitId = $produit->getPrix();
 
         if (!isset($cart['elements'][$produitId]))
         {
             return; 
         }
 
-        $cart['total'] =$cart['total']+ $produit->getPrice();
+        $cart['total'] =$cart['total']+ $produit->getPrix();
         $cart['elements'][$produitId]['quantity'] =$cart['elements'][$produitId]['quantity'] -1;
 
         if ($cart['elements'][$produitId]['quantity']<=0)
