@@ -27,4 +27,4 @@ services:
 
     App\Service\FileUploader:
         arguments:
-            $targetDirectory: '%kernel.project_dir%/uploads'
+            $targetDirectory: '%kernel.project_dir%/public/uploads'

@@ -24,12 +24,13 @@
                 <td>{{ produit.description }}</td>
                 <td>{{ produit.prix }}</td>
                 <td>
-                     <img src="{{asset('uploads/' ~ produit.imageFilename )}}"/>
+                     <img src="{{asset('uploads/' ~ produit.imageFilename )}}" class="w-100"/>
                 
                 </td>
                 <td>
                     <a href="{{ path('catalogue_show', {'id': produit.id}) }}">show</a>
                     <a href="{{ path('cart_add', {'id': produit.id}) }}">buy</a>
+                    <a href="{{ path('cart_remove', {'id': produit.id}) }}">annuler</a>
                    
                 </td>
             </tr>

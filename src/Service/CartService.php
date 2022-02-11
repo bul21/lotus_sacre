@@ -39,7 +39,7 @@ class CartService
             ];
         }
 
-        $cart['total'] =$cart['total']+ $produit->getId();
+        $cart['total'] =$cart['total']+ $produit->getPrix();
         $cart['elements'][$produitId]['quantity'] =$cart['elements'][$produitId]['quantity'] +1;
 
         $this ->sessionInterface->set('cart',$cart);
@@ -49,14 +49,14 @@ class CartService
     {
 
         $cart =$this->get();
-        $produitId = $produit->getPrix();
+        $produitId = $produit->getId();
 
         if (!isset($cart['elements'][$produitId]))
         {
             return; 
         }
 
-        $cart['total'] =$cart['total']+ $produit->getPrix();
+        $cart['total'] =$cart['total'] - $produit->getPrix();
         $cart['elements'][$produitId]['quantity'] =$cart['elements'][$produitId]['quantity'] -1;
 
         if ($cart['elements'][$produitId]['quantity']<=0)

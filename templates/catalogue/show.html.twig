@@ -26,11 +26,13 @@
             <tr>
                 <th>ImageFilename</th>
                 <td>
-                    <img src="{{asset('uploads/' ~ produit.imageFilename )}}"/>
+                    <img src="{{asset('uploads/' ~ produit.imageFilename )}}" class="w-50"/>
                 </td>
             </tr>
         </tbody>
     </table>
+    <a href="{{ path('cart_add', {'id': produit.id}) }}">buy</a>
+     <a href="{{ path('cart_remove', {'id': produit.id}) }}">annuler</a>
 
     <a href="{{ path('catalogue_index') }}">back to list</a>
 

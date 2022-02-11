@@ -1,5 +1,5 @@
 <?php
-
+ 
 namespace App\Service;
 
 use \Stripe\StripeClient;
@@ -16,6 +16,7 @@ class PaymentService
        $this->stripe = new StripeClient('sk_test_51KRHXgJh9aVwNMU0HZQ6yDz7Xm6GUJtbTgXUhfVAXRgW6B58t51aQ3yw88uY5ZnUAT0PJVo7O3Q09wo8tXJvtgrR00N0ghs6Lv');
     }
 
+
     public function create():string
     {
         $cart =$this->cartService->get();
@@ -31,7 +32,7 @@ class PaymentService
             ];
         }
 
-        $protocol= $_SERVER['HTTPS'] ? 'https' :'https';
+        $protocol= $_SERVER['HTTPS'] ? 'https' :'http';
         $host = $_SERVER['SERVER_NAME'];
         $successUrl = $protocol . '://' . $host . '/payment/success/{CHECKOUT_SESSION_ID}';
         $failureUrl = $protocol . '://' . $host . '/payment/failure/{CHECKOUT_SESSION_ID}';
