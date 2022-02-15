@@ -3,12 +3,31 @@
 {% block title %}Home lotus_sacre{% endblock %}
 
 {% block body %}
-Bienvenue!
+<h1>Bienvenue!</h1>
 
-<img src={{asset('media/h-61fbe8449b738.jpg')}} width="25%">
-<img src={{asset('media/h-61fbecf8e4fc8.jpg')}} width="25%">
-<img src={{asset('media/h-61fbe2bb700dd.jpg')}} width="25%">
-<img src={{asset('media/a600d08f237d83c8db600faa4e3256cf.jpg')}} width="50%">
+<img class ="displayed"src={{asset('media/a600d08f237d83c8db600faa4e3256cf.jpg')}} width="25%"/>
+<img src={{asset('media/h-61fbe8449b738.jpg')}} width="50%">
+<img class ="displayed"src={{asset('media/h-61fbecf8e4fc8.jpg')}} width="50%">
+<img src={{asset('media/h-61fbe2bb700dd.jpg')}} width="50%">
+
+<style>
+
+body{
+      background-color:#69a238;
+     
+}
+img.displayed{
+    display:block;
+    margin-left:auto;
+    margin-right: auto;
+
+}
+h1{
+    color:#742771;
+    text-align:center;
+}
+   
+</style>
 
 
 {% endblock %}
