@@ -4,6 +4,13 @@
 
 {% block body %}
     <h1>Produit</h1>
+    <style>
+
+        body{
+         background-color:#69a238;  
+           
+    }
+    </style>
 
     <table class="table">
         <tbody>
@@ -31,9 +38,9 @@
             </tr>
         </tbody>
     </table>
-    <a href="{{ path('cart_add', {'id': produit.id}) }}">buy</a>
-     <a href="{{ path('cart_remove', {'id': produit.id}) }}">annuler</a>
+    <a href="{{ path('cart_add', {'id': produit.id}) }}"><button>Acheter</button></a>
+     <a href="{{ path('cart_remove', {'id': produit.id}) }}"><button>Supprimer</button></a>
 
-    <a href="{{ path('catalogue_index') }}">back to list</a>
+    <a href="{{ path('catalogue_index') }}"><button>retour aux produits</button></a>
 
 {% endblock %}
