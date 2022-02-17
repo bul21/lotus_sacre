@@ -4,6 +4,13 @@
 
 {% block body %}
     <h1>Article</h1>
+     <style>
+
+        body{
+         background-color:#69a238;  
+           
+    }
+    </style>
 
     <table class="table">
         <tbody>
@@ -26,9 +33,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('profile_article_index') }}">back to list</a>
+    <a href="{{ path('profile_article_index') }}"><button>Retour</button></a>
 
-    <a href="{{ path('profile_article_edit', {'id': article.id}) }}">edit</a>
+    <a href="{{ path('profile_article_edit', {'id': article.id}) }}"><button>Modifier</button></a>
 
     {{ include('profile_article/_delete_form.html.twig') }}
 {% endblock %}

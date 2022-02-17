@@ -3,7 +3,7 @@
 {% block title %}Article index{% endblock %}
 
 {% block body %}
-    <h1>Article index</h1>
+    <h1>Mes articles</h1>
     <style>
 
         body{
@@ -30,8 +30,8 @@
                 <td>{{ article.contenu }}</td>
                 <td>{{ article.motCles }}</td>
                 <td>
-                    <a href="{{ path('profile_article_show', {'id': article.id}) }}">show</a>
-                    <a href="{{ path('profile_article_edit', {'id': article.id}) }}">edit</a>
+                    <a href="{{ path('profile_article_show', {'id': article.id}) }}"><button>Détails</button></a>
+                    <a href="{{ path('profile_article_edit', {'id': article.id}) }}"><button>Modifier</button></a>
                 </td>
             </tr>
         {% else %}
@@ -42,5 +42,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('profile_article_new') }}">Create new</a>
+    <a href="{{ path('profile_article_new') }}"><button>créer un nouvel article</button></a>
 {% endblock %}

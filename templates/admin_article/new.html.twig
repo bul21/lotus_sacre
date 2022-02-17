@@ -4,8 +4,15 @@
 
 {% block body %}
     <h1>Create new Article</h1>
+     <style>
+
+        body{
+         background-color:#69a238;  
+           
+    }
+    </style>
 
     {{ include('admin_article/_form.html.twig') }}
 
-    <a href="{{ path('admin_article_index') }}">back to list</a>
+    <a href="{{ path('admin_article_index') }}"><button>Retour</button></a>
 {% endblock %}

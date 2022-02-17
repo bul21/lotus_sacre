@@ -3,7 +3,7 @@
 {% block title %}New Article{% endblock %}
 
 {% block body %}
-    <h1>Create new Article</h1>
+    <h1>Créer un nouvel article</h1>
     <style>
 
         body{
@@ -14,5 +14,7 @@
 
     {{ include('profile_article/_form.html.twig') }}
 
-    <a href="{{ path('profile_article_index') }}">back to list</a>
+    <a href="{{ path('profile_article_index') }}"><button>Retour</button></a>
+
+
 {% endblock %}

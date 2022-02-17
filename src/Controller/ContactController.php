@@ -15,11 +15,19 @@ class ContactController extends AbstractController
      */
     public function index(Request $request): Response
     {
+        
+        
 
 /* c'est un formulaire de contact à remplir pour l'utilisateur  */
         $form= $this->createForm(ContactType::class);
+        return $this->renderForm('contact/index.html.twig',[
+            'controller_name' =>'ContactController',
+            'formulaire' =>$form
+
+        ]);
         $form->handleRequest($request);
         $data=$form->getData();
+        
         
 /* c'est un formulaire  avec un bouton "envoyer" avec une condition: si le formulaire est rempli correctement 
  et envoyé, c'est écrit succes
