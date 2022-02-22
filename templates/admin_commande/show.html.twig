@@ -4,6 +4,13 @@
 
 {% block body %}
     <h1>Commande</h1>
+     <style>
+
+        body{
+         background-color:#69a238;  
+           
+    }
+    </style>
 
     <table class="table">
         <tbody>
@@ -22,9 +29,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('admin_commande_index') }}">back to list</a>
+    <a href="{{ path('admin_commande_index') }}"><button>Retour</button></a> 
 
-    <a href="{{ path('admin_commande_edit', {'id': commande.id}) }}">edit</a>
+    <a href="{{ path('admin_commande_edit', {'id': commande.id}) }}"><button>Modifier</button></a> 
 
     {{ include('admin_commande/_delete_form.html.twig') }}
 {% endblock %}

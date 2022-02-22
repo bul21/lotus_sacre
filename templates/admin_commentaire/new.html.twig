@@ -1,11 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Commentaire{% endblock %}
+{% block title %}Nouveau commentaire{% endblock %}
 
 {% block body %}
-    <h1>Create new Commentaire</h1>
+    <h1>Création d'un nouveau commentaire</h1>
+    <style>
+
+        body{
+         background-color:#69a238;  
+           
+    }
+    </style>
+
 
     {{ include('admin_commentaire/_form.html.twig') }}
 
-    <a href="{{ path('admin_commentaire_index') }}">back to list</a>
+    <a href="{{ path('admin_commentaire_index') }}"><button>Retour à la liste</button></a> 
 {% endblock %}

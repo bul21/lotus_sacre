@@ -4,6 +4,13 @@
 
 {% block body %}
     <h1>Paiement index</h1>
+    <style>
+
+        body{
+         background-color:#69a238;  
+           
+    }
+    </style>
 
     <table class="table">
         <thead>
@@ -21,8 +28,8 @@
                 <td>{{ paiement.creation ? paiement.creation|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ paiement.stripeSessionId }}</td>
                 <td>
-                    <a href="{{ path('admin_paiement_show', {'id': paiement.id}) }}">show</a>
-                    <a href="{{ path('admin_paiement_edit', {'id': paiement.id}) }}">edit</a>
+                    <a href="{{ path('admin_paiement_show', {'id': paiement.id}) }}"><button>Détail</button></a> 
+                    <a href="{{ path('admin_paiement_edit', {'id': paiement.id}) }}"><button>Modifier</button></a> 
                 </td>
             </tr>
         {% else %}
@@ -33,5 +40,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('admin_paiement_new') }}">Create new</a>
+    <a href="{{ path('admin_paiement_new') }}"><button>Création</button></a> 
 {% endblock %}

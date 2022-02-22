@@ -4,6 +4,13 @@
 
 {% block body %}
     <h1>Commande index</h1>
+     <style>
+
+        body{
+         background-color:#69a238;  
+           
+    }
+    </style>
 
     <table class="table">
         <thead>
@@ -21,8 +28,8 @@
                 <td>{{ commande.creation ? commande.creation|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ commande.reference }}</td>
                 <td>
-                    <a href="{{ path('admin_commande_show', {'id': commande.id}) }}">show</a>
-                    <a href="{{ path('admin_commande_edit', {'id': commande.id}) }}">edit</a>
+                    <a href="{{ path('admin_commande_show', {'id': commande.id}) }}"><button>Détails</button></a> 
+                    <a href="{{ path('admin_commande_edit', {'id': commande.id}) }}"><button>modifier</button></a> 
                 </td>
             </tr>
         {% else %}
@@ -33,5 +40,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('admin_commande_new') }}">Create new</a>
+    <a href="{{ path('admin_commande_new') }}"><button>Création de nouvelle commande</button></a> 
 {% endblock %}

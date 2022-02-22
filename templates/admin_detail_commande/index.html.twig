@@ -4,6 +4,13 @@
 
 {% block body %}
     <h1>DetailCommande index</h1>
+    <style>
+
+        body{
+         background-color:#69a238;  
+           
+    }
+    </style>
 
     <table class="table">
         <thead>
@@ -19,8 +26,8 @@
                 <td>{{ detail_commande.id }}</td>
                 <td>{{ detail_commande.quantite }}</td>
                 <td>
-                    <a href="{{ path('admin_detail_commande_show', {'id': detail_commande.id}) }}">show</a>
-                    <a href="{{ path('admin_detail_commande_edit', {'id': detail_commande.id}) }}">edit</a>
+                    <a href="{{ path('admin_detail_commande_show', {'id': detail_commande.id}) }}"><button>Détail</button></a> 
+                    <a href="{{ path('admin_detail_commande_edit', {'id': detail_commande.id}) }}"><button>Modifier</button></a> 
                 </td>
             </tr>
         {% else %}
@@ -31,5 +38,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('admin_detail_commande_new') }}">Create new</a>
+    <a href="{{ path('admin_detail_commande_new') }}"><button>Création</button></a> 
 {% endblock %}
